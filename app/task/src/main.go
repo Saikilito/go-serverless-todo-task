@@ -9,9 +9,16 @@ import (
 
 	fiberadapter "github.com/awslabs/aws-lambda-go-api-proxy/fiber"
 	"github.com/gofiber/fiber/v2"
+
+	"github.com/saikilito/go-serverless-todo-task/app/task/src/routes"
 )
 
 var fiberLambda *fiberadapter.FiberLambda
+
+// Handler
+func hello(c *fiber.Ctx) error {
+	return c.SendString("Hello, World 👋!")
+}
 
 // init the Fiber Server
 func init() {
@@ -19,9 +26,10 @@ func init() {
 	var app *fiber.App
 	app = fiber.New()
 
-	app.Get("/task", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, Task!")
-	})
+	// Routes
+	app.Get("/", hello)
+
+	routes.MainRoutes(app)
 
 	fiberLambda = fiberadapter.New(app)
 }
