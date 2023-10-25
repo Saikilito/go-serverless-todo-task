@@ -1,0 +1,8 @@
+name: Build Libs
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        env GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags="-s -w" -o bin/libs/utils libs/utils/main.go
+
+      shell: bash

@@ -1,0 +1,16 @@
+service: go-serverless-todo-task
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: go1.x
+  stage: ${opt:stage, 'dev'}
+
+package:
+  individually: true
+  patterns:
+    - "!./**"
+    - ./bin/**
+
+functions:
+  task: ${file(./app/task/serverless.yml)}

@@ -1,0 +1,3 @@
+handler: bin/task
+events:
+  - httpApi: "*"
