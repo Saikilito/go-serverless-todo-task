@@ -23,3 +23,7 @@ vendor
 node_modules
 package-*.json
 package.json
+db_data
+tmp
+
+.env

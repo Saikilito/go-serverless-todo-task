@@ -1,3 +1,3 @@
 package utils
 
-func Void(){}
+func Void() {}

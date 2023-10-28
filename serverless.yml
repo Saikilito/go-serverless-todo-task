@@ -12,5 +12,12 @@ package:
     - "!./**"
     - ./bin/**
 
+# plugins:
+#   - serverless-offline
+
+# custom:
+#   serverless-offline:
+#     noPrependStageInUrl: true
+
 functions:
   task: ${file(./app/task/serverless.yml)}

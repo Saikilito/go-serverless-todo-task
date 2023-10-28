@@ -4,5 +4,7 @@ runs:
   steps:
     - run: |
         env GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags="-s -w" -o bin/libs/utils libs/utils/main.go
+        env GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags="-s -w" -o bin/libs/task/structs libs/task/structs/task.go
+        env GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags="-s -w" -o bin/libs/user/structs libs/user/structs/user.go
 
       shell: bash

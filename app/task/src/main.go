@@ -9,6 +9,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 
 	"github.com/saikilito/go-serverless-todo-task/app/task/src/routes"
+	database "github.com/saikilito/go-serverless-todo-task/libs/db"
 )
 
 var fiberLambda *fiberadapter.FiberLambda
@@ -19,9 +20,10 @@ func health(c *fiber.Ctx) error {
 }
 
 var app *fiber.App
-// init the Fiber Server
+
 func init() {
-	// log.Printf("Fiber cold start")
+	database.HandleDatabaseConnection()
+
 	app = fiber.New()
 
 	// Midleware
@@ -32,11 +34,9 @@ func init() {
 	app.Get("/", health)
 	routes.MainRoutes(app)
 
-
 	fiberLambda = fiberadapter.New(app)
 }
 
 func main() {
-	// Make the handler available for Remote Procedure Call by AWS Lambda
 	lambda.Start(fiberLambda.ProxyWithContextV2)
 }
