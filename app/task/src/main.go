@@ -34,6 +34,7 @@ func init() {
 	app.Get("/", health)
 	routes.MainRoutes(app)
 
+	// Fiber launch
 	fiberLambda = fiberadapter.New(app)
 }
 
