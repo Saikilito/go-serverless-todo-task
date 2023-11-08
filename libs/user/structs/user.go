@@ -10,6 +10,6 @@ type User struct {
 
 	firstName string `gorm:"not null"`
 	lastName  string `gorm:"not null"`
-	email     string `gorm:"not null; unique_index"`
+	email     string `gorm:"not null;unique_index"`
 	Task      []structs.Task
 }
